@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J CROWN ROYAL KITCHEN</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --gold: #f1c40f;
+            --gold-hover: #d4ac0d;
+            --text: #c9d1d9;
+            --text-white: #ffffff;
+            --danger: #c62828;
+            --support: #0288d1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text);
+            padding-bottom: 140px;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 2px solid var(--gold);
+            padding: 2rem 1rem 1.5rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .hero-banner {
+            width: 100%;
+            height: 220px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(241, 196, 15, 0.15);
+            position: relative;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(13, 17, 23, 0.95));
+            color: var(--gold);
+            text-align: center;
+            padding: 0.8rem 0.5rem 0.5rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .category-title {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 1rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.4rem;
+        }
+
+        .menu-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+     .card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.8rem;
+    display: block;
+}
+   .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            color: var(--text-white);
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .card-price {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: #8b949e;
+            margin-bottom: 1rem;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.6rem;
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .add-btn {
+            width: 100%;
+            padding: 0.7rem;
+            background-color: var(--gold);
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .add-btn:hover {
+            background-color: var(--gold-hover);
+        }
+
+        #about {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin: 30px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #about h2 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        #about h3 {
+            color: var(--gold);
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        #about p {
+            color: var(--text);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        #about a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #about a:hover {
+            text-decoration: underline;
+        }
+
+        .basket-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 600px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--gold);
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            z-index: 99999;
+        }
+
+        .basket-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-white);
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .basket-actions {
+            display: flex;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 0.6rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .clear-btn {
+            background-color: var(--danger);
+            color: #ffffff;
+        }
+
+        .support-btn {
+            background-color: var(--support);
+            color: #ffffff;
+        }
+
+        .order-btn {
+            background-color: var(--gold);
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>J CROWN ROYAL KITCHEN</h1>
+        <p>Pre-Order Menu & Delivery</p>
+    </header>
+
+    <div class="container">
+
+        <div class="hero-banner">
+            <img src="pasta.jpg" alt="Royal Red Pasta" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=1000&q=80';">
+            <div class="hero-caption">Royal Red Pasta • Our Signature</div>
+        </div>
+
+        <h2 class="category-title">⭐ Royal Pasta (Our Signature)</h2>
+
+        <div class="menu-card"><img class="card-img" src="royal-red.jpg" alt="Royal Red Pasta">
+            <div class="card-header">
+                <span class="card-title">Royal Red Pasta</span>
+                <span class="card-price">₦3,000+</span>
+            </div>
+            <div class="card-desc">Our signature. Rich tomato-pepper pasta, jollof-style.</div>
+            <select id="pasta-red-protein">
+                <option value="With Chicken|3300">With Chicken (₦3,300)</option>
+                <option value="With Turkey|3500">With Turkey (₦3,500)</option>
+                <option value="With Beef|3000">With Beef (₦3,000)</option>
+                <option value="With Fish|3000">With Fish (₦3,000)</option>
+                <option value="With Goat Meat|3500">With Goat Meat (₦3,500)</option>
+            </select>
+            <button class="add-btn" type="button" onclick="addToCart('Royal Red Pasta', 'pasta-red-protein')">Add to Order</button>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Student Combo</span>
+                <span class="card-price">₦2,500</span>
+            </div>
+            <div class="card-desc">Small pasta plus a boiled egg.</div>
+            <button class="add-btn" type="button" onclick="addExtraToCart('Student Combo (Small Pasta + Boiled Egg)', 2500)">Add to Order</button>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Spaghetti Stir-Fry</span>
+                <span class="card-price">₦3,000+</span>
+            </div>
+            <div class="card-desc">Delicious spiced stir-fry pasta.</div>
+            <select id="spag-protein">
+                <option value="With Chicken|3300">With Chicken (₦3,300)</option>
+                <option value="With Turkey|3500">With Turkey (₦3,500)</option>
+                <option value="With Beef|3000">With Beef (₦3,000)</option>
+                <option value="With Fish|3000">With Fish (₦3,000)</option>
+                <option value="With Goat Meat|3500">With Goat Meat (₦3,500)</option>
+            </select>
+            <button class="add-btn" type="button" onclick="addToCart('Spaghetti Stir-Fry', 'spag-protein')">Add to Order</button>
+        </div>
+
+        <h2 class="category-title">Rice Takeaway</h2>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Smokey Jollof Rice</span>
+                <span class="card-price">₦3,000+</span>
+            </div>
+            <div class="card-desc">Rich Nigerian party jollof cooked to perfection.</div>
+            <select id="jollof-protein">
+                <option value="With Chicken|3300">With Chicken (₦3,300)</option>
+                <option value="With Turkey|3500">With Turkey (₦3,500)</option>
+                <option value="With Beef|3000">With Beef (₦3,000)</option>
+                <option value="With Fish|3000">With Fish (₦3,000)</option>
+                <option value="With Goat Meat|3500">With Goat Meat (₦3,500)</option>
+            </select>
+            <button class="add-btn" type="button" onclick="addToCart('Smokey Jollof Rice', 'jollof-protein')">Add to Order</button>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Special Fried Rice</span>
+                <span class="card-price">₦3,000+</span>
+            </div>
+            <div class="card-desc">Savory fried rice loaded with veggies.</div>
+            <select id="fried-protein">
+                <option value="With Chicken|3300">With Chicken (₦3,300)</option>
+                <option value="With Turkey|3500">With Turkey (₦3,500)</option>
+                <option value="With Beef|3000">With Beef (₦3,000)</option>
+                <option value="With Fish|3000">With Fish (₦3,000)</option>
+                <option value="With Goat Meat|3500">With Goat Meat (₦3,500)</option>
+            </select>
+            <button class="add-btn" type="button" onclick="addToCart('Special Fried Rice', 'fried-protein')">Add to Order</button>
+        </div>
+
+        <h2 class="category-title">Soups & Swallow</h2>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Ogbono Soup</span>
+                <span class="card-price">₦3,500+</span>
+            </div>
+            <div class="card-desc">Rich and draw Ogbono soup prepared with authentic spices and assorted meats.</div>
+            <select id="ogbono-swallow">
+                <option value="With Eba|3500">With Eba (₦3,500)</option>
+                <option value="With Semo|3500">With Semo (₦3,500)</option>
+                <option value="With Pounded Yam|4000">With Pounded Yam (₦4,000)</option>
+                <option value="With Wheat|3500">With Wheat (₦3,500)</option>
+            </select>
+            <button class="add-btn" type="button" onclick="addSoupToCart('Ogbono Soup', 'ogbono-swallow')">Add to Order</button>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Egusi Soup</span>
+                <span class="card-price">₦3,500+</span>
+            </div>
+            <div class="card-desc">Rich melon seed soup with assorted delicacies.</div>
+            <select id="egusi-swallow">
+                <option value="With Eba|3500">With Eba (₦3,500)</option>
+                <option value="With Semo|3500">With Semo (₦3,500)</option>
+                <option value="With Pounded Yam|4000">With Pounded Yam (₦4,000)</option>
+                <option value="With Wheat|3500">With Wheat (₦3,500)</option>
+            </select>
+            <button class="add-btn" type="button" onclick="addSoupToCart('Egusi Soup', 'egusi-swallow')">Add to Order</button>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Egusi Pepper Soup</span>
+                <span class="card-price">₦3,500+</span>
+            </div>
+            <div class="card-desc">Spicy and flavorful Egusi pepper soup loaded with authentic local spices.</div>
+            <select id="egusi-peppersoup-swallow">
+                <option value="With Eba|3500">With Eba (₦3,500)</option>
+                <option value="With Semo|3500">With Semo (₦3,500)</option>
+                <option value="With Pounded Yam|4000">With Pounded Yam (₦4,000)</option>
+                <option value="With Wheat|3500">With Wheat (₦3,500)</option>
+            </select>
+            <button class="add-btn" type="button" onclick="addSoupToCart('Egusi Pepper Soup', 'egusi-peppersoup-swallow')">Add to Order</button>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Royal Pepper Soup</span>
+                <span class="card-price">₦3,400+</span>
+            </div>
+            <div class="card-desc">Hot, aromatic pepper soup broth cooked with your choice of protein.</div>
+            <select id="peppersoup-protein">
+                <option value="Chicken Pepper Soup|3400">Chicken Pepper Soup (₦3,400)</option>
+                <option value="Turkey Pepper Soup|4000">Turkey Pepper Soup (₦4,000)</option>
+                <option value="Goat Meat Pepper Soup|3500">Goat Meat Pepper Soup (₦3,500)</option>
+                <option value="Catfish Pepper Soup|3500">Catfish Pepper Soup (₦3,500)</option>
+            </select>
+            <button class="add-btn" type="button" onclick="addSelectExtraToCart('peppersoup-protein')">Add to Order</button>
+        </div>
+
+        <h2 class="category-title">Proteins & Extras</h2>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Extra Fried Plantain</span>
+                <span class="card-price">₦500</span>
+            </div>
+            <button class="add-btn" type="button" onclick="addExtraToCart('Extra Fried Plantain', 500)">Add to Order</button>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Extra Chicken Cut</span>
+                <span class="card-price">₦1,500+</span>
+            </div>
+            <select id="chicken-cut-type">
+                <option value="Chicken Wing|1500">Chicken Wing (₦1,500)</option>
+                <option value="Chicken Drumstick (Lap)|2500">Chicken Drumstick (Lap) (₦2,500)</option>
+            </select>
+            <button class="add-btn" type="button" onclick="addSelectExtraToCart('chicken-cut-type')">Add to Order</button>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Extra Turkey Cut</span>
+                <span class="card-price">₦2,000+</span>
+            </div>
+            <select id="turkey-cut-type">
+                <option value="Turkey Wing|2000">Turkey Wing (₦2,000)</option>
+                <option value="Turkey Drumstick (Lap)|2700">Turkey Drumstick (Lap) (₦2,700)</option>
+            </select>
+            <button class="add-btn" type="button" onclick="addSelectExtraToCart('turkey-cut-type')">Add to Order</button>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Extra Boiled Egg</span>
+                <span class="card-price">₦400</span>
+            </div>
+            <button class="add-btn" type="button" onclick="addExtraToCart('Boiled Egg', 400)">Add to Order</button>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Extra Fried Egg</span>
+                <span class="card-price">₦500+</span>
+            </div>
+            <select id="fried-egg-size">
+                <option value="Single Fried Egg|500">Single Fried Egg (₦500)</option>
+                <option value="Double Fried Egg|900">Double Fried Egg (₦900)</option>
+            </select>
+            <button class="add-btn" type="button" onclick="addSelectExtraToCart('fried-egg-size')">Add to Order</button>
+        </div>
+
+        <div class="menu-card">
+            <div class="card-header">
+                <span class="card-title">Extra Poached Egg</span>
+                <span class="card-price">₦500+</span>
+            </div>
+            <select id="poached-egg-size">
+                <option value="Single Poached Egg|500">Single Poached Egg (₦500)</option>
+                <option value="Double Poached Egg|900">Double Poached Egg (₦900)</option>
+            </select>
+            <button class="add-btn" type="button" onclick="addSelectExtraToCart('poached-egg-size')">Add to Order</button>
+        </div>
+
+        <section id="about">
+          <h2>About J Crown Royal Kitchen</h2>
+          <p>
+            Freshly cooked Nigerian meals, made with love and delivered
+            to your door. From smokey jollof to rich soups, every dish is
+            prepared fresh when you order.
+          </p>
+
+          <h3>Delivery & Hours</h3>
+          <p>
+            📍 Delivering within Benin City (Oluku, Ugbowo and nearby areas)<br>
+            ⏳ Pre-order available on WhatsApp, so please order early
+          </p>
+
+          <h3>Contact Us</h3>
+          <p>
+            <a href="https://wa.me/2349010729164" target="_blank">💬 Chat on WhatsApp</a><br>
+            <a href="tel:+2349010729164">📞 Call us</a>
+          </p>
+
+          <h3>Follow Us</h3>
+          <p>
+            <a href="https://instagram.com/jcrownroyalkitchen" target="_blank">Instagram</a> •
+            <a href="https://tiktok.com/@jcrownroyalkitchen" target="_blank">TikTok</a>
+          </p>
+        </section>
+
+    </div>
+
+    <div class="basket-bar">
+        <div class="basket-top">
+            <span>Total: <span id="cart-total" style="color: var(--gold);">₦0</span></span>
+            <span>(<span id="cart-count">0</span> items)</span>
+        </div>
+        <div class="basket-actions">
+            <button class="action-btn clear-btn" type="button" onclick="clearCart()">Clear</button>
+            <button class="action-btn support-btn" type="button" onclick="contactSupport()">Support</button>
+            <button class="action-btn order-btn" type="button" onclick="sendWhatsAppOrder(event)">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let total = 0;
+        const myWhatsApp = "2349010729164";
+
+        function formatNaira(amount) {
+            return "₦" + amount.toLocaleString("en-NG");
+        }
+
+        function addItem(name, price) {
+            cart.push({ name: name, price: price });
+            total += price;
+            updateBasketDisplay();
+        }
+
+        function addToCart(itemName, selectId) {
+            const select = document.getElementById(selectId);
+            if (!select) return;
+            const val = select.value.split('|');
+                        addItem(itemName + " (" + val[0] + ")", parseInt(val[1], 10));
+        }
+
+        function addSoupToCart(soupName, selectId) {
+            const select = document.getElementById(selectId);
+            if (!select) return;
+            const val = select.value.split('|');
+            addItem(soupName + " (" + val[0] + ")", parseInt(val[1], 10));
+        }
+
+        function addExtraToCart(extraName, price) {
+            addItem(extraName, price);
+        }
+
+        function addSelectExtraToCart(selectId) {
+            const select = document.getElementById(selectId);
+            if (!select) return;
+            const val = select.value.split('|');
+            addItem(val[0], parseInt(val[1], 10));
+        }
+
+        function updateBasketDisplay() {
+            document.getElementById("cart-total").textContent = formatNaira(total);
+            document.getElementById("cart-count").textContent = cart.length;
+        }
+
+        function clearCart() {
+            if (cart.length === 0) {
+                alert("Your order is already empty.");
+                return;
+            }
+            if (confirm("Clear all items from your order?")) {
+                cart = [];
+                total = 0;
+                updateBasketDisplay();
+            }
+        }
+
+        function openWhatsApp(message) {
+            const url = "https://wa.me/" + myWhatsApp + "?text=" + encodeURIComponent(message);
+            const w = window.open(url, "_blank");
+            if (!w) { window.location.href = url; }
+        }
+
+        function contactSupport() {
+            openWhatsApp("Hello J Crown Royal Kitchen, I need some help please.");
+        }
+
+        function sendWhatsAppOrder(event) {
+            if (event) { event.preventDefault(); }
+            if (cart.length === 0) {
+                alert("Please add at least one item to your order first.");
+                return;
+            }
+            let msg = "Hello J Crown Royal Kitchen, I would like to pre-order:\n\n";
+            cart.forEach(function (item, i) {
+                msg += (i + 1) + ". " + item.name + " - " + formatNaira(item.price) + "\n";
+            });
+            msg += "\nTotal: " + formatNaira(total) + "\n\nMy name:\nDelivery address:\nPhone number:";
+            openWhatsApp(msg);
+        }
+    </script>
+
+</body>
+</html>
